@@ -15,13 +15,15 @@ public class PopulateObjects{
     
     public PopulateObjects(FileProcessor fpIn){
         proc = fpIn;
-        types.put("Integer", Integer.TYPE);
+        types.put("int", Integer.TYPE);
         types.put("String", String.class);
-        types.put("Double", Double.TYPE);
+        types.put("double", Double.TYPE);
     }
     public void deserObjects(){
         String line = proc.readLine();
-        while(line != null){
+        //System.out.println(line);
+        while(line != null){ 
+            //System.out.println(line.split(":")[0]);
             String fqn = line.split(":")[1].trim();
             String clsName = fqn;
             try{
@@ -29,31 +31,44 @@ public class PopulateObjects{
                 Object obj = cls.newInstance();  
                 for(int i=0; i<2; i++){
                     line = proc.readLine();
+                    //System.out.println(line);
                     String[] parts = line.split(", ");
                     String typeString = parts[0].split("=")[1].trim();
                     String nameString = parts[1].split("=")[1].trim();
                     String valString = parts[2].split("=")[1].trim();
-                    Class sigClass = Class.forName(typeString);
                     
                     Class[] signature = new Class[1];
-                    signature[0] = types.get(sigClass);
+                    signature[0] = types.get(typeString);
+                    //System.out.println("set" + nameString);
                     String methdName = "set" + nameString;
                     Method meth = cls.getMethod(methdName, signature); 
                      
                     Object[] params = new Object[1]; 
-                    params[0] = createParam(typeString, nameString);
+                    params[0] = createParam(typeString, valString);
                     Object result = meth.invoke(obj, params);
                 }
+                addToMap(obj);
+                line = proc.readLine();
+                //System.out.println(line);
             }catch(ClassNotFoundException cnfe){
-                cnfe.getMessage();
+                System.out.println("Class Not Found Exception");
+                System.err.println(cnfe.getMessage());
             }catch(InstantiationException ie){
-                ie.getMessage();
+                System.out.println("Instantiation Exception");
+                System.err.println(ie.getMessage());
             }catch(NoSuchMethodException nsme){
-                nsme.getMessage();
+                System.out.println("No Such Method Exception");
+                System.err.println(nsme.getMessage());
             }catch(IllegalAccessException iae){
-                iae.getMessage();
+                System.out.println("Illegal Access Exception");
+                System.err.println(iae.getMessage());
             }catch(InvocationTargetException ite){
-                ite.getMessage();
+                System.out.println("Invocation Target Exception");
+                System.err.println(ite.getMessage());
+            }finally{
+                while(line!=null && !line.startsWith("fqn")){
+                    line = proc.readLine();
+                }
             }
         }
     }
@@ -70,7 +85,7 @@ public class PopulateObjects{
         }
     }
 
-    public void addValue(Object newObj){
+    public void addToMap(Object newObj){
         if(newObj instanceof First){
             if(first.containsKey((First)newObj)){
                 int temp = first.get((First)newObj);
@@ -80,7 +95,7 @@ public class PopulateObjects{
             }
         }else if(newObj instanceof Second){
             if(second.containsKey((Second)newObj)){
-                int temp = second.get((First)newObj);
+                int temp = second.get((Second)newObj);
                 second.put((Second)newObj, temp+1);
             }else{
                 second.put((Second)newObj, 1);
@@ -119,7 +134,6 @@ public class PopulateObjects{
         output += "\nTotal Number of First objects: " + countAllFirst();
         output += "\nNumber of non-duplidate Second objects: " + countUniqueSecond();
         output += "\nTotal Number of Second objects: " + countAllSecond();
-        output += "\n";
         return output;
     }
 }

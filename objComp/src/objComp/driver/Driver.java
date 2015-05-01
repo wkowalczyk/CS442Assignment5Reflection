@@ -32,7 +32,7 @@ public class Driver{
         long totalTime = finishTime - startTime;
         long avgTime = totalTime/iterations;
         try{
-            proc.writeToFile("Total time: "+"seconds");
+            proc.writeToFile("Total time: "+totalTime/1000.000+" seconds");
         }catch(IOException ioe){
             ioe.getMessage();
         }

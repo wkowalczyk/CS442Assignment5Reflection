@@ -51,7 +51,7 @@
 
 <target name="run" depends="jar">
         <java jar="${BUILD}/jar/objComp.jar"  fork="true">
-        	<arg value="${arg0}"/>
+        	<arg value="inputsmall.txt"/>
        		<arg value="${arg1}"/>
         	<arg value="${arg2}"/>
             <arg value="${arg3}"/>

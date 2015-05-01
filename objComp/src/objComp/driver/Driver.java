@@ -16,7 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class Driver{
     public static void main(String[] args){
-        FileProcessor proc = new FileProcessor("input.txt","output.txt");
+        FileProcessor proc = new FileProcessor("inputsmall.txt","output.txt");
         long startTime = System.currentTimeMillis();
         int iterations = 1;
         for(int i=0; i<iterations; i++){

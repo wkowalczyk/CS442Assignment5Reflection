@@ -24,7 +24,9 @@ public class First{
     }
     
     @Override public boolean equals(Object obj){
-        if((obj.getIntValue() == IntValue) && (obj.getStringValue().equals(StringValue)){
+        if(!(obj instanceof First)){
+            return false;
+        }else if((((First)obj).getIntValue() == IntValue) && (((First)obj).getStringValue().equals(StringValue))){
             return true;
         }else{
             return false;

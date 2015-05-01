@@ -24,7 +24,9 @@ public class Second{
     }
     
     @Override public boolean equals(Object obj){
-        if((obj.getDoubleValue() == DoubleValue) && (obj.getIntValue() == IntValue)){
+        if(!(obj instanceof Second)){
+            return false;
+        }else if((((Second)obj).getDoubleValue() == DoubleValue) && (((Second)obj).getIntValue() == IntValue)){
             return true;
         }else{
             return false;

@@ -11,13 +11,15 @@ public class PopulateObjects{
     private HashMap<First,Integer> first = new HashMap<First, Integer>();
     private HashMap<Second,Integer> second = new HashMap<Second, Integer>();
     private HashMap<String,Class> types = new HashMap<String,Class>();
-    public PopulateObjects(){
+    private FileProcessor proc;
+    
+    public PopulateObjects(FileProcessor fpIn){
+        proc = fpIn;
         types.put("Integer", Integer.TYPE);
         types.put("String", String.class);
         types.put("Double", Double.TYPE);
     }
     public void deserObjects(){
-        FileProcessor proc = new FileProcessor("input.txt","output.txt");
         String line = proc.readLine();
         while(line != null){
             String fqn = line.split(":")[1].trim();
@@ -55,6 +57,7 @@ public class PopulateObjects{
             }
         }
     }
+
     public Object createParam(String type, String value){
         if(type.equals("int")){
             return new Integer(value);
@@ -66,6 +69,7 @@ public class PopulateObjects{
             return null;
         }
     }
+
     public void addValue(Object newObj){
         if(newObj instanceof First){
             if(first.containsKey((First)newObj)){
@@ -82,5 +86,40 @@ public class PopulateObjects{
                 second.put((Second)newObj, 1);
             }
         }
+    }
+    
+    public int countUniqueFirst(){
+        return first.size();
+    }
+
+    public int countAllFirst(){
+        ArrayList<Integer> firstCounts = new ArrayList<Integer>(first.values());
+        int numClasses = 0;
+        for(int i =0; i<firstCounts.size(); i++){
+            numClasses+=firstCounts.get(i);
+        }
+        return numClasses;
+    }
+    
+    public int countUniqueSecond(){
+        return second.size();
+    }
+
+    public int countAllSecond(){
+        ArrayList<Integer> secondCounts = new ArrayList<Integer>(second.values());
+        int numClasses = 0;
+        for(int i =0; i<secondCounts.size(); i++){
+            numClasses+=secondCounts.get(i);
+        }
+        return numClasses;
+    }
+    public String toString(){
+        String output;
+        output = "Number of non-duplidate First objects: "+ countUniqueFirst();
+        output += "\nTotal Number of First objects: " + countAllFirst();
+        output += "\nNumber of non-duplidate Second objects: " + countUniqueSecond();
+        output += "\nTotal Number of Second objects: " + countAllSecond();
+        output += "\n";
+        return output;
     }
 }

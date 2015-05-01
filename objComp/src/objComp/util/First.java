@@ -25,7 +25,8 @@ public class First{
         return StringValue;
     }
     
-    @Override public boolean equals(Object obj){
+    @Override
+    public boolean equals(Object obj){
         if(!(obj instanceof First)){
             return false;
         }else if((((First)obj).getIntValue() == IntValue) && (((First)obj).getStringValue().equals(StringValue))){
@@ -33,5 +34,14 @@ public class First{
         }else{
             return false;
         }
+    }
+    
+    @Override
+    public int hashCode(){
+        int hash = 1;
+        hash = hash*47;
+        hash = hash*StringValue.hashCode();
+        hash = hash*IntValue;
+        return hash;
     }
 }

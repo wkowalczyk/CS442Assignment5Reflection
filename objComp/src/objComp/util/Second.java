@@ -25,7 +25,8 @@ public class Second{
         return IntValue;
     }
     
-    @Override public boolean equals(Object obj){
+    @Override 
+    public boolean equals(Object obj){
         if(!(obj instanceof Second)){
             return false;
         }else if((((Second)obj).getDoubleValue() == DoubleValue) && (((Second)obj).getIntValue() == IntValue)){
@@ -33,5 +34,14 @@ public class Second{
         }else{
             return false;
         }
+    }
+    
+    @Override
+    public int hashCode(){
+        int hash = 1;
+        hash = hash * 47;
+        hash = hash * IntValue;
+        hash = hash * (int)DoubleValue;
+        return hash;
     }
 }

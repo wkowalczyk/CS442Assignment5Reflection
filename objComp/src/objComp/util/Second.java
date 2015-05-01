@@ -1,5 +1,7 @@
 package objComp.util;
 
+import objComp.util.Logger;
+
 public class Second{
     private double DoubleValue;
     private int IntValue;

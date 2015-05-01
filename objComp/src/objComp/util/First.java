@@ -1,5 +1,7 @@
 package objComp.util;
 
+import objComp.util.Logger;
+
 public class First{
     private int IntValue;
     private String StringValue;

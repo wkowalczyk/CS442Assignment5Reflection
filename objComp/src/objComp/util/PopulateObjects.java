@@ -1,6 +1,7 @@
 package objComp.util;
 
 import objComp.fileOperations.FileProcessor;
+import objComp.util.Logger;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.lang.reflect.Method;

@@ -1,5 +1,6 @@
 package objComp.fileOperations;
 
+import objComp.util.Logger;
 import java.io.PrintWriter;
 import java.io.FileReader;
 import java.io.BufferedWriter;

@@ -1,5 +1,6 @@
 package objComp.driver;
 
+import objComp.util.Logger;
 import objComp.fileOperations.FileProcessor;
 import java.util.HashMap;
 import java.util.ArrayList;

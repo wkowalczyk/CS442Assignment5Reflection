@@ -5,7 +5,6 @@ import objComp.fileOperations.FileProcessor;
 import objComp.util.PopulateObjects;
 import objComp.util.First;
 import objComp.util.Second;
-import objComp.fileOperations.FileProcessor;
 
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -16,9 +15,14 @@ import java.lang.reflect.InvocationTargetException;
 
 public class Driver{
     public static void main(String[] args){
-        FileProcessor proc = new FileProcessor("inputsmall.txt","output.txt");
+		Logger log = Logger.getInstance();
+		int LOGGER_VALUE = Integer.parseInt(args[3]);
+		log.setDebugValue(LOGGER_VALUE);
+		String inFile = args[0];
+		String outFile = args[1];
+        FileProcessor proc = new FileProcessor(inFile, outFile);
         long startTime = System.currentTimeMillis();
-        int iterations = 1;
+        int iterations = Integer.parseInt(args[2]);
         for(int i=0; i<iterations; i++){
             PopulateObjects pop = new PopulateObjects(proc);
             pop.deserObjects();

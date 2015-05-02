@@ -27,7 +27,8 @@ public class First{
     
     @Override
     public boolean equals(Object obj){
-        if(!(obj instanceof First)){
+        Logger.printToStdout(3, "Equals is being overridden in First.");
+		if(!(obj instanceof First)){
             return false;
         }else if((((First)obj).getIntValue() == IntValue) && (((First)obj).getStringValue().equals(StringValue))){
             return true;
@@ -38,7 +39,8 @@ public class First{
     
     @Override
     public int hashCode(){
-        int hash = 1;
+    	Logger.printToStdout(3, "hashCode is being overriden in First.");
+	    int hash = 1;
         hash = hash*47;
         hash = hash*StringValue.hashCode();
         hash = hash*IntValue;

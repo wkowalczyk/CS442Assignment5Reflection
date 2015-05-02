@@ -75,6 +75,7 @@ public class PopulateObjects{
     }
 
     public Object createParam(String type, String value){
+		Logger.printToStdout(4, "Creating parameters.");
         if(type.equals("int")){
             return new Integer(value);
         }else if(type.equals("double")){
@@ -87,6 +88,7 @@ public class PopulateObjects{
     }
 
     public void addToMap(Object newObj){
+		Logger.printToStdout(4, "Adding to map.");
         if(newObj instanceof First){
             if(first.containsKey((First)newObj)){
                 int temp = first.get((First)newObj);

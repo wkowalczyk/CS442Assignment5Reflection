@@ -27,7 +27,7 @@ public class FileProcessor{
     }
 
     public String readLine(){
-        //Logger.printToStdout(1, "The file is being read from."); 
+        Logger.printToStdout(1, "The file is being read from."); 
         String nextLine = null;
         try{
             nextLine = buffReader.readLine();
@@ -42,7 +42,7 @@ public class FileProcessor{
     }
     
     public void writeToFile(String message) throws IOException{
-        //Logger.printToStdout(2, "The file is being written to.");
+        Logger.printToStdout(2, "The file is being written to.");
         buffWriter.write(message);
         buffWriter.newLine();
         buffWriter.flush();

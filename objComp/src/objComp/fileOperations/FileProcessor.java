@@ -17,7 +17,7 @@ public class FileProcessor{
         try{
             FileReader inFile = new FileReader(inFileName);
             buffReader = new BufferedReader(inFile);
-            buffWriter = new BufferedWriter(new FileWriter(outFileName, true));
+            buffWriter = new BufferedWriter(new FileWriter(outFileName, false));
         }catch(FileNotFoundException fnfe){
             System.out.println(fnfe.getMessage());
         }catch(IOException ioe){

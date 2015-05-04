@@ -17,8 +17,9 @@ public class Driver{
     public static void main(String[] args){
         FileProcessor proc = new FileProcessor("input.txt","output.txt");
         long startTime = System.currentTimeMillis();
-        int iterations = 1;
+        int iterations = 5;
         for(int i=0; i<iterations; i++){
+            proc = new FileProcessor("input.txt","output.txt");
             PopulateObjects pop = new PopulateObjects(proc);
             pop.deserObjects();
             try{

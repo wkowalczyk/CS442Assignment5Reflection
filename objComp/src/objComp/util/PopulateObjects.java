@@ -2,16 +2,18 @@ package objComp.util;
 
 import objComp.fileOperations.FileProcessor;
 import objComp.util.Logger;
+import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ArrayList;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.lang.reflect.InvocationTargetException;
 
 public class PopulateObjects{
-    private HashMap<First,Integer> first = new HashMap<First, Integer>();
-    private HashMap<Second,Integer> second = new HashMap<Second, Integer>();
-    private HashMap<String,Class> types = new HashMap<String,Class>();
+    private Map<First,Integer> first = new HashMap<First, Integer>();
+    private Map<Second,Integer> second = new HashMap<Second, Integer>();
+    private Map<String,Class> types = new HashMap<String,Class>();
     private FileProcessor proc;
     
     public PopulateObjects(FileProcessor fpIn){
@@ -88,7 +90,7 @@ public class PopulateObjects{
     }
 
     public void addToMap(Object newObj){
-		Logger.printToStdout(4, "Adding to map.");
+		Logger.printToStdout(3, "Adding to map.");
         if(newObj instanceof First){
             if(first.containsKey((First)newObj)){
                 int temp = first.get((First)newObj);
@@ -111,7 +113,7 @@ public class PopulateObjects{
     }
 
     public int countAllFirst(){
-        ArrayList<Integer> firstCounts = new ArrayList<Integer>(first.values());
+        List<Integer> firstCounts = new ArrayList<Integer>(first.values());
         int numClasses = 0;
         for(int i =0; i<firstCounts.size(); i++){
             numClasses+=firstCounts.get(i);
@@ -124,7 +126,7 @@ public class PopulateObjects{
     }
 
     public int countAllSecond(){
-        ArrayList<Integer> secondCounts = new ArrayList<Integer>(second.values());
+        List<Integer> secondCounts = new ArrayList<Integer>(second.values());
         int numClasses = 0;
         for(int i =0; i<secondCounts.size(); i++){
             numClasses+=secondCounts.get(i);

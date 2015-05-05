@@ -14,16 +14,16 @@ public class FileProcessor{
     private String nextWord;
     private BufferedWriter buffWriter = null;
 
-    public FileProcessor(String inFileName, String outFileName){
+    public FileProcessor(String inFileName){
         try{
             FileReader inFile = new FileReader(inFileName);
             buffReader = new BufferedReader(inFile);
-            buffWriter = new BufferedWriter(new FileWriter(outFileName, true));
+            //buffWriter = new BufferedWriter(new FileWriter(outFileName, false));
         }catch(FileNotFoundException fnfe){
             System.out.println(fnfe.getMessage());
-        }catch(IOException ioe){
+        }/*catch(IOException ioe){
             System.out.println("I/O Exception");
-        }
+        }*/
     }
 
     public String readLine(){

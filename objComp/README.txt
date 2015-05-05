@@ -27,6 +27,15 @@ BUGS:
 
 We did not find any bugs while testing the code.
 
+JUSTIFICATION:
+
+	In the FileProcessor we used BufferedReader because we saw in the 
+last project that it is faster than Scanner. In PopulateObjects we used a 
+HashMap to store the types of Integer, String, and Double because that way
+we just had to look up the key depending on which instance we needed. We also 
+used HashMaps to store the instances of First and Second because it is more 
+efficient than ArrayList when doing the add and remove operations. 
+
 FILES:
     
     Included with this project are 10 files:
@@ -37,9 +46,23 @@ FILES:
     FileProcessor.java, the file user to parse the input file text
     Logger.java, the debug class that prints out messages when specific
         actions occur
+	Driver.java, the main driver for the PopulateObjects object
+	PopulateObjects.java, contains the class that takes in the input file and 
+		populates the objects of First and Second with the attributes
+		specified in that file.
+	First.java, one of the classes from which objects are being made in 
+		PopulateObjects, contains an int and String value
+	Second.java, one of the classes from which objects are being made in 
+		PopulateObjects, contains a double and int value
+	 
     
 SAMPLE OUTPUT:
 
+Number of non-duplicate First objects: 4
+Total Number of First objects: 6
+Number of non-duplicate Second objects: 6
+Total Number of Second objects: 8
+Total time: 0.256 seconds
 
 TO COMPILE:
 
@@ -47,15 +70,15 @@ TO COMPILE:
 
 TO RUN:
 
-    Run the command "ant -buildfile src/build.xml run -Darg0="input.txt" -Darg1=output.txt -Darg2="3" -Darg3="0""
+    Run the command "ant -buildfile src/build.xml run -Darg0="input.txt" -Darg1="5" -Darg2="0""
 
 LOGGER VALUES:
 
     0 - no logging statements
     1 - reading from a file
-    2 - writing to a file
-    3 - methods have been overloaded
-    4 - values have been added to the hashMaps
+    2 - methods have been overridden
+    3 - Map has been added to
+    4 - Parameters have ben created
 
 EXTRA CREDIT:
 
